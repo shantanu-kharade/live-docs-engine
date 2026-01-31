@@ -4,7 +4,7 @@ A high-performance, Google Docs-style collaborative editor built to master **Dis
 
 Unlike standard CRUD apps, this project handles real-time synchronization, offline support, and binary state persistence using a custom WebSocket engine.
 
-## 🏗 The Architecture
+## The Architecture
 
 This isn't just a text editor; it's a sync engine. 
 
@@ -15,8 +15,9 @@ This isn't just a text editor; it's a sync engine.
 ### System Flow
 ```mermaid
 graph TD
-    ClientA["Client A (Tiptap)"] -->|Binary Diff| WS[WebSocket Server]
-    ClientB["Client B (Tiptap)"] -->|Binary Diff| WS
+    ClientA[Client A (Tiptap)] -->|Binary Diff| WS[WebSocket Server]
+    ClientB[Client B (Tiptap)] -->|Binary Diff| WS
     WS -->|Broadcast| ClientA
     WS -->|Broadcast| ClientB
     WS -->|Debounced Save (Buffer)| DB[(PostgreSQL)]
+```
